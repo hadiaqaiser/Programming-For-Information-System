@@ -1,26 +1,29 @@
-// 1) Set the weight limit once (easy to change later)
+// Limit is 15 kg
 const LIMIT_KG = 15;
 
-// 2) This runs when the button is clicked
+// Check button → tells if overweight
 function checkBaggage() {
-  // 3) Read the value from the input box
-  const value = document.getElementById('weight').value;
+  let w = parseFloat(document.getElementById("weight").value);
 
-  // 4) Turn text into a number
-  const weight = parseFloat(value);
-
-  // 5) If not a number, tell the user and stop
-  if (isNaN(weight)) {
-    alert('Please enter a valid number.');
-    return;
-  }
-
-  // 6) Compare to the limit and alert the result
-  if (weight > LIMIT_KG) {
-    // 7) Show how much it’s over (1 decimal place)
-    alert(`Overweight by ${(weight - LIMIT_KG).toFixed(1)} kg`);
+  if (isNaN(w)) {
+    alert("Enter a number.");
+  } else if (w > LIMIT_KG) {
+    alert(`Overweight by ${(w - LIMIT_KG).toFixed(1)} kg`);
   } else {
-    alert('OK: within 15 kg limit.');
-    //sdfasdfasdfasd
+    alert("OK: within 15 kg limit.");
+  }
+}
+
+// Fix button → set weight back to 15 if over
+function fixWeight() {
+  let w = parseFloat(document.getElementById("weight").value);
+
+  if (isNaN(w)) {
+    alert("Enter a number first.");
+  } else if (w > LIMIT_KG) {
+    document.getElementById("weight").value = LIMIT_KG;
+    alert("Fixed! Now 15 kg.");
+  } else {
+    alert("Already fine, no change needed.");
   }
 }
