@@ -21,5 +21,6 @@ function checkBaggage() {
     alert(`Overweight by ${(weight - LIMIT_KG).toFixed(1)} kg`);
   } else {
     alert('OK: within 15 kg limit.');
+    //sdfasdfasdfasd
   }
 }
