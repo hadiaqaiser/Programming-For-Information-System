@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <title>Baggage Checker</title>
-  <!-- Load our JS after HTML so elements exist -->
-  <script src="script.js" defer></script>
+  <script src="C2T1.js" defer></script>
 </head>
 <body>
   <h3>Baggage Weight (kg)</h3>
 
-  <!-- User inputs weight -->
+  <!-- Input for weight -->
   <input id="weight" type="number" min="0" step="0.1" placeholder="e.g., 14.5">
 
-  <!-- Button runs our function -->
+  <!-- Buttons -->
   <button onclick="checkBaggage()">Check</button>
+  <button onclick="fixWeight()">Remove Overweight</button>
 </body>
 </html>
