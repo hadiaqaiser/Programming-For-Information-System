@@ -1,34 +1,12 @@
-// Limit is 15 kg
-const LIMIT_KG = 15;
-
-// Check button → tells if overweight
-function checkBaggage() {
-  let w = parseFloat(document.getElementById("weight").value);
-
-  if (isNaN(w)) {
-    alert("Enter a number.");
-  } else if (w > LIMIT_KG) {
-    alert(`Overweight by ${(w - LIMIT_KG).toFixed(1)} kg`);
-  } else {
-    alert("OK: within 15 kg limit.");
-  }
+// Sum of multiples of k below limit in O(1)
+function sumBelow(limit, k) {
+  const m = Math.floor((limit - 1) / k);
+  return k * m * (m + 1) / 2;
 }
 
-// Fix button → set weight back to 15 if over
-function fixWeight() {
-  let w = parseFloat(document.getElementById("weight").value);
-
-  if (isNaN(w)) {
-    alert("Enter a number first.");
-  } else if (w > LIMIT_KG) {
-    document.getElementById("weight").value = LIMIT_KG;
-    alert("Fixed! Now 15 kg.");
-  } else {
-    alert("Already fine, no change needed.");
-  }
-}
-
-
-
-//Empty test change.
-
+// Project Euler #1: sum of multiples of 3 or 5 below 1000
+let euler1 = () => {
+  const limit = 1000, a = 3, b = 5;
+  const ans = sumBelow(limit, a) + sumBelow(limit, b) - sumBelow(limit, 15);
+  alert(`Euler #1 answer (below 1000): ${ans}`); // 233168
+};
