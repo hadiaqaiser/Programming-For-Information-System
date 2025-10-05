@@ -27,3 +27,39 @@ let listEuler2 = (a, l) => {
   }
   return sum;
 };
+
+// 3) a is list (any length)
+let listEuler3 = (a, l) => listEuler2(a, l);
+
+// Hook functions for buttons
+let eulerlist = () => {
+  let a = parseInt(document.getElementById('a1').value, 10);
+  let b = parseInt(document.getElementById('b1').value, 10);
+  let l = parseNumList(document.getElementById('l').value);
+
+  if (isNaN(a)) a = 2;
+  if (isNaN(b)) b = 3;
+  if (l.length === 0) l = [1,2,3,4,5,6,7,9,10,10,10];
+
+  alert(`Sum = ${listEuler1(a, b, l)}`);
+};
+
+let euler2Lists = () => {
+  let a = parseNumList(document.getElementById('aList').value);
+  let l = parseNumList(document.getElementById('mList').value);
+
+  if (a.length === 0) a = [2,3];
+  if (l.length === 0) l = [1,2,3,4,5,6,7,9,10,10,10];
+
+  alert(`Sum = ${listEuler2(a.slice(0, 2), l)}`);
+};
+
+let euler2Lists1 = () => {
+  let a = parseNumList(document.getElementById('aList').value);
+  let l = parseNumList(document.getElementById('mList').value);
+
+  if (a.length === 0) a = [2,3,5];
+  if (l.length === 0) l = [1,2,3,4,5,6,7,9,10,10,10];
+
+  alert(`Sum = ${listEuler3(a, l)}`);
+};
