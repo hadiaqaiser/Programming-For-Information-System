@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <title>Euler Project</title>
-  <script src="C2T1.js" defer></script>  <!-- Euler #1 -->
-  <script src="C2T2.js" defer></script>  <!-- Custom multiples -->
-</head>
-<body>
-  <h3>Project Euler #1</h3>
-  <button onclick="euler1()">Solve Task 1: Project Euler (3 or 5 below 1000)</button>
+  <head>
+    <meta charset="utf-8">
+    <title>Programming Exercises</title>
+    <!-- Load JS files (simple, no frameworks) -->
+    <script src="ex1.js"></script>
+    <script src="ex2.js"></script>
+    <script src="ex3.js"></script>
+  </head>
+  <body>
+    <h1>Exercise 1</h1>
+    <p>
+      <input type="text" id="weight" placeholder="Enter weight in kg">
+      <!-- replace check function -->
+      <button onclick="check()">Check Baggage</button>
+    </p>
 
-  <hr>
-
-  <h3>Custom Sum of Multiples</h3>
-  <label>a:</label>
-  <input id="a" type="number" min="1" placeholder="e.g., 3">
-  <label>b:</label>
-  <input id="b" type="number" min="1" placeholder="e.g., 5">
-  <label>n (limit):</label>
-  <input id="n" type="number" min="1" placeholder="e.g., 1000">
-  <button onclick="eulerCustom()">Compute Custom</button>
-</body>
+    <p>
+      <input type="text" id="removed" placeholder="kg to remove" style="display:none;">
+      <!-- replace remove function -->
+      <button id="remB" onclick="remove()" style="display:none;">Remove this much baggage (kg)</button>
+    </p>
+  </body>
 </html>
