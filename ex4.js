@@ -11,3 +11,7 @@ function processFactorsMultiples() {
     return;
   }
 
+  // Split around ":" → [factorsPart, multiplesPart]
+  let parts = input.split(":");
+  let factors = parts[0].trim().split(/\s+/).map(Number);
+  let multiples = parts[1].trim().split(/\s+/).map(Number);
