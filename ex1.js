@@ -1,4 +1,4 @@
-// Exercise 1 — Baggage checker
+// Ex1 — Baggage checker
 
 const LIMIT_KG = 15; // airline limit
 

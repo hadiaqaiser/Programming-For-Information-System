@@ -1,4 +1,4 @@
-// Exercise 3 — List based multiple sums
+// Ex3 — List based multiple sums
 
 // Parse space/comma separated numbers into array
 function parseNumList(str) {

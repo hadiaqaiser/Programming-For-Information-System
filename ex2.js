@@ -1,4 +1,4 @@
-// Exercise 2 — Project Euler #1 + custom
+// Ex2 — Project Euler #1 + custom
 
 // Q1: sum of all multiples of 3 or 5 below 1000
 let euler1 = () => {
