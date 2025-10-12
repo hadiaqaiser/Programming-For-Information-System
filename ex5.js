@@ -62,3 +62,54 @@ function processCorrupt() {
     alert(`corrupt : ${original}`);
   }
 }
+
+/* -------------------------------------------
+   Version 2: "Fix & compute"
+   - Drop bad (non-numeric) tokens and compute.
+   - If colon missing OR no valid factors OR no valid multiples → "corrupt".
+   Example:
+     "3 5 hello: 1 2 3 4 5 6 7 8 9"
+       → 23 : 3 5 hello: 1 2 3 4 5 6 7 8 9
+     "2 3 5 67"
+       → corrupt : 2 3 5 67
+-------------------------------------------- */
+function processCorruptFixed() {
+  let input = prompt("Enter: factors : multiples\nEx: 3 5 : 10 15 20");
+  if (!input) return;
+
+  const original = norm(input);
+
+  // Must have a colon to be fixable at all
+  if (!original.includes(":")) {
+    alert(`corrupt : ${original}`);
+    return;
+  }
+
+  const [leftRaw, rightRaw] = original.split(":");
+  const left = norm(leftRaw);
+  const right = norm(rightRaw);
+
+  // Keep only numeric tokens; drop the rest
+  const safeParse = (t) => {
+    const n = parseInt(t);
+    return isNaN(n) ? null : n;
+  };
+  const factorsNums = splitTokens(left).map(safeParse).filter(n => n !== null);
+  const multiplesNums = splitTokens(right).map(safeParse).filter(n => n !== null);
+
+  // If nothing usable, still corrupt
+  if (factorsNums.length === 0 || multiplesNums.length === 0) {
+    alert(`corrupt : ${original}`);
+    return;
+  }
+
+  const sum = sumByFactors(factorsNums, multiplesNums);
+
+  // Important: echo the ORIGINAL string (including any bad tokens) in the tail,
+  // per the examples provided.
+  alert(`${sum} : ${left} : ${right}`);
+}
+
+// Expose to HTML buttons
+window.processCorrupt = processCorrupt;
+window.processCorruptFixed = processCorruptFixed;
