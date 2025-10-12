@@ -25,3 +25,40 @@ function sumByFactors(factors, multiples) {
   }
   return sum;
 }
+
+/* -------------------------------
+   Version 1: Strict — prepend "corrupt" on any error
+   Examples:
+     "2 3 5 67" → "corrupt : 2 3 5 67"
+     "3 5 hello: 1 2 3" → "corrupt : 3 5 hello: 1 2 3"
+-------------------------------- */
+function processCorrupt() {
+  let input = prompt("Enter: factors : multiples\nEx: 3 5 : 10 15 20");
+  if (!input) return;
+
+  const original = norm(input);
+
+  // Must have a colon
+  if (!original.includes(":")) {
+    alert(`corrupt : ${original}`);
+    return;
+  }
+
+  // Split parts
+  const [leftRaw, rightRaw] = original.split(":");
+  const left = norm(leftRaw);
+  const right = norm(rightRaw);
+
+  // Try parsing ALL tokens strictly (any NaN => corrupt)
+  try {
+    const factors = splitTokens(left).map(parse);
+    const multiples = splitTokens(right).map(parse);
+
+    // If parse succeeded everywhere, compute like ex4
+    const sum = sumByFactors(factors, multiples);
+    alert(`${sum} : ${left} : ${right}`);
+  } catch (_) {
+    // Any bad token => corrupt
+    alert(`corrupt : ${original}`);
+  }
+}
