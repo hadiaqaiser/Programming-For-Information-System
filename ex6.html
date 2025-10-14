@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script>
-function setup() {
-  var btn = document.getElementById("mybutton");
-  var para = document.getElementById("myelement");
-
-  btn.onclick = function() {
-    para.innerHTML = "Text changed after clicking the button!";
-  };
-}
-window.onload = setup;
-</script>
-
+  <meta charset="UTF-8">
+  <title>Custom Element Toggle</title>
 </head>
 <body>
-  <p id="myelement">This is original text.</p>
-  <button id="mybutton">Click Me</button>
+  <!-- Custom element placed in body -->
+  <toggle-box></toggle-box>
+
+  <script>
+    //Define class for our custom element
+    class ToggleBox extends HTMLElement {
+      constructor() {
+        super();
+
+        
+  </script>
 </body>
 </html>
