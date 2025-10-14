@@ -4,16 +4,23 @@
   <meta charset="UTF-8">
   <title>Custom Element Toggle</title>
 </head>
+
 <body>
+
   <!-- Custom element placed in body -->
   <toggle-box></toggle-box>
 
   <script>
+
     //Define class for our custom element
     class ToggleBox extends HTMLElement {
       constructor() {
         super();
 
+        //Attach shadow DOM to isolate structure & styles
+        const root = this.attachShadow({ mode: 'open' });
+
+        
         
   </script>
 </body>
