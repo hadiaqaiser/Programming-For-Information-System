@@ -35,7 +35,18 @@
         this.toggled = false;
       }
 
-    
+    //Runs when element is added to the page
+      connectedCallback() {
+
+        //Toggle text & color on click
+        this.btnEl.onclick = () => {
+          this.toggled = !this.toggled;
+          this.textEl.textContent = this.toggled
+            ? "Text changed after clicking the button!"
+            : "This is original text.";
+          this.textEl.style.color = this.toggled ? "blue" : "black";
+        };
+
 
   </script>
 </body>
