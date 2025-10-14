@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Custom Element Toggle</title>
+  <title> Custom Element Toggle </title>
 </head>
 
 <body>
@@ -17,44 +17,41 @@
       constructor() {
         super();
 
-        //Attach shadow DOM to isolate structure & styles
-        const root = this.attachShadow({ mode: 'open' });
+    //Attach shadow DOM to isolate structure & styles
+    const root = this.attachShadow({ mode: 'open' });
 
-        //Add internal HTML + styles
-        root.innerHTML = `
-          <p id="text">This is original text.</p>
-          <button id="btn">Click Me</button>
-          <style>
-            button { padding: 8px 12px; cursor: pointer; }
-          </style>
-        `;
+    //Add internal HTML + styles
+       root.innerHTML = `
+        <p id="text"> This is original text. </p>
+        <button id="btn"> Click Me </button>
+        <style> button { padding: 8px 12px; cursor: pointer; } </style> `;
 
-        //Cache elements & initial state
-        this.textEl = root.getElementById('text');
-        this.btnEl = root.getElementById('btn');
-        this.toggled = false;
+      //Cache elements & initial state
+      this.textEl = root.getElementById('text');
+      this.btnEl = root.getElementById('btn');
+      this.toggled = false;
       }
 
-    //Runs when element is added to the page
+      //Runs when element is added to the page
       connectedCallback() {
 
-        //Toggle text & color on click
-        this.btnEl.onclick = () => {
-          this.toggled = !this.toggled;
-          this.textEl.textContent = this.toggled
-            ? "Text changed after clicking the button!"
-            : "This is original text.";
-          this.textEl.style.color = this.toggled ? "blue" : "black";
+      //Toggle text & color on click
+      this.btnEl.onclick = () => {
+        this.toggled = !this.toggled;
+        this.textEl.textContent = this.toggled
+          ? "Text changed after clicking the button!"
+          : "This is original text.";
+        this.textEl.style.color = this.toggled ? "blue" : "black";
         };
 
     //Change button background on hover
-        this.btnEl.onmouseover = () => this.btnEl.style.background = "lightblue";
-        this.btnEl.onmouseout = () => this.btnEl.style.background = "";
+    this.btnEl.onmouseover = () => this.btnEl.style.background = "lightblue";
+    this.btnEl.onmouseout = () => this.btnEl.style.background = "";
       }
     }
 
-    //Register the custom element
-    customElements.define('toggle-box', ToggleBox);
+  //Register the custom element
+  customElements.define('toggle-box', ToggleBox);
 
   </script>
 </body>
